@@ -1,8 +1,8 @@
 import { User } from '@/modules/users/domain/contracts/user';
+import { UserNotFoundException } from '@/modules/users/domain/exceptions/user-not-found';
 import { UserRepository } from '@/modules/users/domain/repositories/user.repository';
 import { Case } from '@/shared/domain/interfaces/case';
 import { Injectable } from '@nestjs/common';
-import { InvalidAccessTokenException } from '../../domain/exceptions/invalid-access-token';
 
 export interface CurrentUserUseCaseInput {
   userId: string;
@@ -16,7 +16,7 @@ export class CurrentUserUseCase implements Case<CurrentUserUseCaseInput, User> {
     const user = await this._userRepository.findById(input.userId);
 
     if (!user) {
-      throw new InvalidAccessTokenException();
+      throw new UserNotFoundException();
     }
 
     return user;
