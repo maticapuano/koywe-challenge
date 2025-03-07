@@ -1,6 +1,5 @@
-import { HttpStatus, INestApplication, Logger } from '@nestjs/common';
+import { INestApplication, Logger } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Response } from 'express';
 
 export const setupSwagger = (app: INestApplication) => {
   const logger = new Logger('Swagger');
@@ -26,11 +25,8 @@ export const setupSwagger = (app: INestApplication) => {
 
   const httpAdapter = app.getHttpAdapter();
 
-  httpAdapter.get(
-    'docs/swagger.json',
-    (_: unknown, res: Response): Response => {
-      return res.status(HttpStatus.OK).send(document);
-    },
+  httpAdapter.get('/docs/swagger.json', (_: unknown, res) =>
+    res.send(document),
   );
 
   logger.log('Swagger documentation is available at /docs');
