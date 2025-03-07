@@ -1,0 +1,34 @@
+import { UserResponseDto } from '@/modules/users/infrastructure/http/api/v1/dtos/user-response.dto';
+import { ToLowerCase } from '@/shared/core/decorators/to-lower-case';
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
+
+export class SignInDto {
+  @ApiProperty({ format: 'email' })
+  @IsNotEmpty()
+  @IsString()
+  @IsEmail()
+  @ToLowerCase()
+  public email: string;
+
+  @ApiProperty({ example: '12345678' })
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(8)
+  @MaxLength(72)
+  public password: string;
+}
+
+export class SignInResponseDto {
+  @ApiProperty()
+  public user: UserResponseDto;
+
+  @ApiProperty({ format: 'jwt' })
+  public accessToken: string;
+}

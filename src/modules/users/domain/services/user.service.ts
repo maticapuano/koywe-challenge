@@ -11,6 +11,12 @@ export class UserService {
     private readonly _hashPasswordAdapter: HashPasswordAdapter,
   ) {}
 
+  /**
+   * Creates a new user
+   * @param data - User creation data containing email and password
+   * @throws {UserEmailTakenException} When the email is already registered
+   * @returns Promise containing the created user
+   */
   public async create(data: CreateUser): Promise<User> {
     const exists = await this._userRepository.findByEmail(data.email);
 
