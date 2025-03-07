@@ -14,6 +14,14 @@ export abstract class DateAdapter {
   public abstract addDays(date: Date, days: number): Date;
 
   /**
+   * Adds specified number of minutes to the date.
+   * @param {Date} date date to which minutes should be added.
+   * @param {number} minutes number of minutes to add.
+   * @returns {Date} new date with added minutes.
+   */
+  public abstract addMinutes(date: Date, minutes: number): Date;
+
+  /**
    * Checks if first date is before second date.
    * @param {Date} date first date.
    * @param {Date} otherDate second date.

@@ -1,6 +1,6 @@
 import { DateAdapter } from '@/shared/domain/adapters/date.adapter';
 import { Injectable } from '@nestjs/common';
-import { addDays, isAfter, isBefore } from 'date-fns';
+import { addDays, addMinutes, isAfter, isBefore } from 'date-fns';
 
 @Injectable()
 export class DateFnsDateAdapter implements DateAdapter {
@@ -10,6 +10,10 @@ export class DateFnsDateAdapter implements DateAdapter {
 
   public addDays(date: Date, days: number): Date {
     return addDays(date, days);
+  }
+
+  public addMinutes(date: Date, minutes: number): Date {
+    return addMinutes(date, minutes);
   }
 
   public isAfter(date: Date, otherDate: Date): boolean {

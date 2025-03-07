@@ -26,11 +26,11 @@ model User {
 
 model Quote {
   id              String   @id @default(uuid())
-  from    String   @db.Char(3)
+  from    String   @db.Char(4)
   to      String   @db.Char(4)
-  amount          Float   @db.DoublePrecision
-  rate            Float   @db.DoublePrecision
-  convertedAmount Float   @db.DoublePrecision @map("converted_amount")
+  amount          Decimal   @db.Decimal(28, 18)
+  rate            Decimal   @db.Decimal(28, 18) 
+  convertedAmount Decimal   @db.Decimal(28, 18) @map("converted_amount")
   createdAt       DateTime @default(now()) @map("created_at")
   expiresAt       DateTime @map("expires_at")
 

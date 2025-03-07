@@ -1,10 +1,12 @@
+import Decimal from 'decimal.js';
+
 export interface Quote {
   id: string;
   from: string;
   to: string;
-  amount: number;
-  rate: number;
-  convertedAmount: number;
+  amount: Decimal;
+  rate: Decimal;
+  convertedAmount: Decimal;
   createdAt: Date;
   expiresAt: Date;
 }
