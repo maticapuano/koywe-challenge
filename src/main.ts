@@ -1,5 +1,10 @@
-import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import {
+  ClassSerializerInterceptor,
+  Logger,
+  ValidationPipe,
+  VersioningType,
+} from '@nestjs/common';
+import { NestFactory, Reflector } from '@nestjs/core';
 import * as compression from 'compression';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
@@ -43,6 +48,8 @@ const bootstrap = async (): Promise<void> => {
       whitelist: true,
     }),
   );
+
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   await app.listen(envService.get('PORT'), () => {
     Logger.log(`Listening on port ${envService.get('PORT')}`, 'Bootstrap');

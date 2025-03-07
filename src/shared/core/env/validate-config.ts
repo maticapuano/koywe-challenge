@@ -13,7 +13,7 @@ export const validateConfig = (config: Record<string, unknown>) => {
         return `- ${pathString} =>> ${message}`;
       });
 
-      throw new Error(`INVALID ENVIRONMENT VARIABLES\n ${errors}`);
+      throw new Error(`INVALID ENVIRONMENT VARIABLES\n ${errors} \n`);
     }
   }
 };

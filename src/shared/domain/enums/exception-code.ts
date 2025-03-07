@@ -9,4 +9,7 @@ export enum ExceptionCode {
   UNPROCESSABLE_ENTITY = 'unprocessable_entity',
   VALIDATION_FAILED = 'validation_failed',
   INVALID_ARGUMENT = 'invalid_argument',
+  INVALID_ACCESS_TOKEN_TYPE = 'invalid_access_token_type',
+  INVALID_ACCESS_TOKEN = 'invalid_access_token',
+  MISSING_ACCESS_TOKEN = 'missing_access_token',
 }
