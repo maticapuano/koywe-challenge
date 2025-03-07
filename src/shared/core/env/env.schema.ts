@@ -16,6 +16,7 @@ export const envSchema = z.object({
     .string()
     .regex(/^[0-9]+[smhd]$/)
     .describe('JWT access token expiration time ej: 1s, 1m, 1h, 1d'),
+  DATABASE_URL: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof envSchema>;
