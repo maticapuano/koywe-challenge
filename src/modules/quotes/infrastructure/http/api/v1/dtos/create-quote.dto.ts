@@ -29,29 +29,3 @@ export class CreateQuoteDto {
   @Min(1)
   public amount: number;
 }
-
-export class CreateQuoteResponseDto {
-  @ApiProperty({ format: 'uuid' })
-  public id: string;
-
-  @ApiProperty({ enum: QuoteCurrencyCode })
-  public from: QuoteCurrencyCode;
-
-  @ApiProperty({ enum: QuoteCurrencyCode })
-  public to: QuoteCurrencyCode;
-
-  @ApiProperty({ example: 1 })
-  public amount: number;
-
-  @ApiProperty({ example: 1 })
-  public rate: number;
-
-  @ApiProperty({ example: 1 })
-  public convertedAmount: number;
-
-  @ApiProperty({ format: 'date-time' })
-  public timestamp: Date;
-
-  @ApiProperty({ format: 'date-time' })
-  public expiresAt: Date;
-}

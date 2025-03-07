@@ -1,13 +1,13 @@
 import { Quote } from '@/modules/quotes/domain/contracts/quote';
 import { QuoteCurrencyCode } from '@/modules/quotes/domain/enums/currency-codes';
-import { CreateQuoteResponseDto } from '../dtos/create-quote.dto';
+import { QuoteResponseDto } from '../dtos/get-quote.dto';
 
-export class CreateQuoteMapper {
+export class QuoteMapper {
   private constructor() {
     throw new Error('Cannot create instance of static class');
   }
 
-  public static toDto(data: Quote): CreateQuoteResponseDto {
+  public static toDto(data: Quote): QuoteResponseDto {
     return {
       id: data.id,
       from: QuoteCurrencyCode[data.from.trim()],

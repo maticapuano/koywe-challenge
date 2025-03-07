@@ -14,4 +14,6 @@ export enum ExceptionCode {
   MISSING_ACCESS_TOKEN = 'missing_access_token',
   USER_EMAIL_TAKEN = 'user_email_taken',
   INVALID_CREDENTIALS = 'invalid_credentials',
+  QUOTE_NOT_FOUND = 'quote_not_found',
+  QUOTE_EXPIRED = 'quote_expired',
 }

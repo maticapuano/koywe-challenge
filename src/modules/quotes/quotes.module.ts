@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CreateQuoteCase } from './application/use-cases/create-quote.case';
+import { GetQuoteByIdCase } from './application/use-cases/get-quote.case';
 import { ExchangeRateAdapter } from './domain/adapters/exchange-rate.adapter';
 import { QuoteRepository } from './domain/repositories/quote.repository';
 import { QuoteService } from './domain/services/quote.service';
@@ -20,6 +21,7 @@ import { QuoteRepositoryIml } from './infrastructure/persistence/repositories/qu
     },
     QuoteService,
     CreateQuoteCase,
+    GetQuoteByIdCase,
   ],
   controllers: [QuoteController],
   exports: [QuoteRepository, ExchangeRateAdapter],
