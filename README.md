@@ -86,6 +86,22 @@ Content-Type: application/json
 }
 ```
 
+#### Get Current User Profile
+
+```http
+GET /v1/auth/me
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "name": "John Doe",
+  "email": "user@example.com",
+  "createdAt": "2025-03-08T12:49:31.856Z",
+  "updatedAt": "2025-03-08T12:49:31.856Z"
+}
+```
+
 ### Currency Exchange
 
 #### Create Quote
