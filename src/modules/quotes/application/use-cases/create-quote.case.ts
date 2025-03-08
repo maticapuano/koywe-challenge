@@ -4,6 +4,7 @@ import { Case } from '@/shared/domain/interfaces/case';
 import { Injectable } from '@nestjs/common';
 import Decimal from 'decimal.js';
 import { Quote } from '../../domain/contracts/quote';
+import { QuoteSameCurrencyException } from '../../domain/exceptions/quote-same-currency.exception';
 import { QuoteRepository } from '../../domain/repositories/quote.repository';
 import { QuoteService } from '../../domain/services/quote.service';
 
@@ -23,6 +24,10 @@ export class CreateQuoteCase implements Case<CreateQuoteCaseInput, Quote> {
   ) {}
 
   public async execute(input: CreateQuoteCaseInput): Promise<Quote> {
+    if (input.from === input.to) {
+      throw new QuoteSameCurrencyException();
+    }
+
     const expiresInMinutes = this._envService.get('QUOTE_EXPIRES_IN_MINUTES');
 
     const expiresAt = this._dateAdapter.addMinutes(

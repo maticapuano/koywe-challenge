@@ -16,5 +16,6 @@ export enum ExceptionCode {
   INVALID_CREDENTIALS = 'invalid_credentials',
   QUOTE_NOT_FOUND = 'quote_not_found',
   QUOTE_EXPIRED = 'quote_expired',
+  QUOTE_SAME_CURRENCY = 'quote_same_currency',
   USER_NOT_FOUND = 'user_not_found',
 }

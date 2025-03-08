@@ -51,6 +51,7 @@ export class QuoteController {
     description: 'Quote created',
     type: QuoteResponseDto,
   })
+  @ApiBadRequestResponse({ description: 'Quote same currency' })
   @ApiOperation({ summary: 'Create quote ' })
   @ApiUnauthorizedResponse({ description: 'Invalid access token' })
   @ApiBearerAuth()

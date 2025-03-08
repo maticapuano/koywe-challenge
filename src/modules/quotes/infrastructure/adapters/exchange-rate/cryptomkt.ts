@@ -26,14 +26,23 @@ export class CryptoMktExchangeRateAdapterIml implements ExchangeRateAdapter {
           },
         })
         .pipe(
-          map((response) => ({
-            rate: Number(response.data[from].price),
-          })),
-          catchError((e) => {
-            this._logger.error('REQUEST FAIL:', e.response?.data?.error);
+          map((response) => {
+            if (!response.data[from]?.price) {
+              throw new InvalidArgumentException(
+                'Sorry, we could not find the rate',
+              );
+            }
+
+            return {
+              rate: Number(response.data[from]?.price),
+            };
+          }),
+          catchError((error) => {
+            this._logger.error('REQUEST FAIL:', error);
 
             throw new InvalidArgumentException(
-              e.response?.data?.error?.message,
+              error.response?.data?.error?.message ??
+                'Sorry, we could not find the rate',
             );
           }),
         ),
