@@ -4,6 +4,10 @@
 
 This project implements a robust API for seamless currency conversion between fiat currencies and cryptocurrencies. The API provides user registration and authentication functionality, allowing authenticated users to generate quotes in real-time.
 
+## Demo
+
+You can access the live demo of the API at [https://high-filide-maticapuano-d243a4d9.koyeb.app/docs](https://high-filide-maticapuano-d243a4d9.koyeb.app/docs)
+
 ## 🌟 Features
 
 - Real-time currency conversion between fiat and crypto
