@@ -8,7 +8,6 @@ This project implements a robust API for seamless currency conversion between fi
 
 - Real-time currency conversion between fiat and crypto
 - JWT-based authentication
-- Rate limiting and request caching
 - Comprehensive API documentation
 - Modular and scalable architecture
 - Environment variable validation and parsing with strong typing and schema enforcement
