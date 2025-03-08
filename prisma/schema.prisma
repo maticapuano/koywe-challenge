@@ -20,20 +20,20 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@map("users")
   @@unique([email])
+  @@map("users")
 }
 
 model Quote {
   id              String   @id @default(uuid())
-  from    String   @db.Char(4)
-  to      String   @db.Char(4)
-  amount          Decimal   @db.Decimal
-  rate            Decimal   @db.Decimal 
-  convertedAmount Decimal   @db.Decimal @map("converted_amount")
+  from            String   @db.Char(4)
+  to              String   @db.Char(4)
+  amount          Decimal  @db.Decimal
+  rate            Decimal  @db.Decimal
+  convertedAmount Decimal  @map("converted_amount") @db.Decimal
   createdAt       DateTime @default(now()) @map("created_at")
   expiresAt       DateTime @map("expires_at")
 
-  @@map("quotes")
   @@index([from, to])
+  @@map("quotes")
 }
