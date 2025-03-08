@@ -6,7 +6,7 @@ export abstract class UserRepository {
    * @param id - The unique identifier of the user
    * @returns Promise that resolves to the user if found, null otherwise
    */
-  abstract findById(id: string): Promise<User | null>;
+  public abstract findById(id: string): Promise<User | null>;
 
   /**
    * Finds a user by their email address
@@ -31,5 +31,5 @@ export abstract class UserRepository {
    * @param user - The user data required for creation
    * @returns Promise that resolves to the created user
    */
-  abstract create(user: CreateUser): Promise<User>;
+  public abstract create(user: CreateUser): Promise<User>;
 }

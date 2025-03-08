@@ -4,7 +4,7 @@ export abstract class HashPasswordAdapter {
    * @param password - The plain text password to hash
    * @returns Promise containing the hashed password string
    */
-  abstract hash(password: string): Promise<string>;
+  public abstract hash(password: string): Promise<string>;
 
   /**
    * Compares a plain text password with a hashed password
@@ -12,5 +12,5 @@ export abstract class HashPasswordAdapter {
    * @param hash - The hashed password to compare against
    * @returns Promise containing boolean indicating if passwords match
    */
-  abstract compare(password: string, hash: string): Promise<boolean>;
+  public abstract compare(password: string, hash: string): Promise<boolean>;
 }
