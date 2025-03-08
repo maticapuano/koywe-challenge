@@ -77,7 +77,7 @@ Content-Type: application/json
 #### Login
 
 ```http
-POST /v1/auth/login
+POST /v1/auth/signin
 Content-Type: application/json
 
 {
@@ -107,7 +107,7 @@ Content-Type: application/json
 #### Create Quote
 
 ```http
-POST /v1/quote
+POST /v1/quotes
 Authorization: Bearer <token>
 Content-Type: application/json
 
@@ -121,7 +121,7 @@ Content-Type: application/json
 #### Get Quote
 
 ```http
-GET /v1/quote/:id
+GET /v1/quotes/:id
 Authorization: Bearer <token>
 ```
 
