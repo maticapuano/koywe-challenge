@@ -1,6 +1,8 @@
-# Currency Exchange API (Fiat ⇄ Crypto)
+# Currency Exchange API (Fiat ⇄ Crypto) Challenge
 
-A modern NestJS API for converting between fiat currencies and cryptocurrencies with real-time price fetching and secure authentication.
+## 🔍 Overview
+
+This project implements a robust API for seamless currency conversion between fiat currencies and cryptocurrencies. The API provides user registration and authentication functionality, allowing authenticated users to generate quotes in real-time.
 
 ## 🌟 Features
 
