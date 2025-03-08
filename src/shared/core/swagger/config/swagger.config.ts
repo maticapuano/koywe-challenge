@@ -8,7 +8,7 @@ export const setupSwagger = (app: INestApplication) => {
 
   const config = new DocumentBuilder()
     .setTitle('Koywe API')
-    .setDescription('API documentation for Koywe services')
+    .setDescription('Currency Exchange API (Fiat ⇄ Crypto) Challenge')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
