@@ -1,26 +1,12 @@
-FROM node:alpine AS builder
+FROM node:alpine
 
-USER node
-WORKDIR /home/node
+WORKDIR /app
 
-COPY --chown=node:node package*.json .
-COPY --chown=node:node . .
+COPY package*.json /app
+COPY . /app
 
 RUN npm ci
 
 RUN npm run build
-RUN npm run prisma generate
 
-FROM node:alpine
-
-ENV NODE_ENV=production
-
-USER node
-
-WORKDIR /home/node
-
-COPY --from=builder --chown=node:node /home/node/package*.json .
-COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules
-COPY --from=builder --chown=node:node /home/node/dist/ ./dist
-
-CMD ["node", "dist/main.js"]
+CMD ["npm", "start"]

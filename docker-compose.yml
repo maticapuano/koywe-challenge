@@ -5,6 +5,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
+    command: npm run start:dev
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@postgres/koywe
     env_file:
       - .env
     depends_on:

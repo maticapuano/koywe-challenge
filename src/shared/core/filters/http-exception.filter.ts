@@ -43,7 +43,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     response: Response,
   ): Response {
     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      code: HttpStatus.INTERNAL_SERVER_ERROR,
+      code: ExceptionCode.UNKNOWN,
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
       message: 'An unexpected error has occurred',
       errors: [],
