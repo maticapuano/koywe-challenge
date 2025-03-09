@@ -22,6 +22,7 @@ You can access the live demo of the API at [https://high-filide-maticapuano-d243
 - **Database:** PostgreSQL with Prisma
 - **Authentication:** JWT (JSON Web Tokens)
 - **API Documentation:** Swagger
+- **Testing Framework:** Jest
 
 ## 🚀 Getting Started
 
@@ -29,7 +30,8 @@ You can access the live demo of the API at [https://high-filide-maticapuano-d243
 
 - Node.js (v20 or higher)
 - PostgreSQL
-- npm or yarn
+- npm
+- Docker (optional)
 
 ### Environment Setup
 

@@ -1,3 +1,4 @@
+import { UserEmailTakenException } from '@/modules/users/domain/exceptions/user-email-taken';
 import { UserService } from '@/modules/users/domain/services/user.service';
 import { Test } from '@nestjs/testing';
 import { JwtAdapter } from '../../../domain/adapters/jwt.adapter';
@@ -63,7 +64,7 @@ describe('SignUpUseCase', () => {
   });
 
   it('should propagate UserEmailTakenException from UserService', async () => {
-    const error = new Error('Email taken');
+    const error = new UserEmailTakenException();
 
     userService.create.mockRejectedValue(error);
 
