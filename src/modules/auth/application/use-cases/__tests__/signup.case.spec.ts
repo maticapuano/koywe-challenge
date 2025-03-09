@@ -1,7 +1,7 @@
 import { UserService } from '@/modules/users/domain/services/user.service';
 import { Test } from '@nestjs/testing';
-import { JwtAdapter } from '../../domain/adapters/jwt.adapter';
-import { SignUpUseCase } from './signup.case';
+import { JwtAdapter } from '../../../domain/adapters/jwt.adapter';
+import { SignUpUseCase } from '../signup.case';
 
 describe('SignUpUseCase', () => {
   let signUpUseCase: SignUpUseCase;

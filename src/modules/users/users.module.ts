@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { HashPasswordAdapter } from './domain/adapters/hash-password.adapter';
 import { UserRepository } from './domain/repositories/user.repository';
 import { UserService } from './domain/services/user.service';
-import { BcryptHashPasswordAdapter } from './infrastructure/adapters/hash-password/bycript';
+import { BcryptHashPasswordAdapter } from './infrastructure/adapters/hash-password/bcrypt';
 import { UserRepositoryIml } from './infrastructure/persistence/repositories/user.repository';
 
 @Module({

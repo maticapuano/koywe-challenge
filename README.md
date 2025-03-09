@@ -60,6 +60,40 @@ npm run prisma:migrate
 npm run start:dev
 ```
 
+## 🧪 Testing
+
+This project uses Jest as the testing framework and includes comprehensive test coverage for all major components.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:cov
+
+# Debug tests
+npm run test:debug
+```
+
+### Test Structure
+
+- Unit tests are organized in a `__tests__` directory within each module, with files following the `.spec.ts` naming convention for clear test identification
+- Test coverage reports are generated in the `coverage` directory
+
+### Test Configuration
+
+The project uses the following Jest configuration:
+
+- Test files pattern: `*.spec.ts`
+- Coverage collection from all TypeScript files
+- Path aliases for easy imports (@/modules, @/shared)
+- Node.js test environment
+
 ## 📚 API Documentation
 
 ### Authentication

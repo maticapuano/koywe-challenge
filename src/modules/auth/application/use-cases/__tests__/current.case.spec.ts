@@ -2,7 +2,7 @@ import { User } from '@/modules/users/domain/contracts/user';
 import { UserNotFoundException } from '@/modules/users/domain/exceptions/user-not-found';
 import { UserRepository } from '@/modules/users/domain/repositories/user.repository';
 import { Test } from '@nestjs/testing';
-import { CurrentUserUseCase } from './current.case';
+import { CurrentUserUseCase } from '../current.case';
 
 describe('CurrentUserUseCase', () => {
   let currentUserUseCase: CurrentUserUseCase;

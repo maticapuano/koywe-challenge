@@ -1,5 +1,5 @@
 import { addDays, addMinutes } from 'date-fns';
-import { DateFnsDateAdapter } from './date-fns';
+import { DateFnsDateAdapter } from '../date-fns';
 
 describe('DateFnsDateAdapter', () => {
   let dateAdapter: DateFnsDateAdapter;

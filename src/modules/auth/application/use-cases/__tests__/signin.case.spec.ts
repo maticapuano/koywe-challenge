@@ -1,9 +1,9 @@
 import { HashPasswordAdapter } from '@/modules/users/domain/adapters/hash-password.adapter';
 import { UserRepository } from '@/modules/users/domain/repositories/user.repository';
 import { Test } from '@nestjs/testing';
-import { JwtAdapter } from '../../domain/adapters/jwt.adapter';
-import { InvalidCredentialsException } from '../../domain/exceptions/invalid-credentials';
-import { SignInUseCase } from './signin.case';
+import { JwtAdapter } from '../../../domain/adapters/jwt.adapter';
+import { InvalidCredentialsException } from '../../../domain/exceptions/invalid-credentials';
+import { SignInUseCase } from '../signin.case';
 
 describe('SignInUseCase', () => {
   let signInUseCase: SignInUseCase;
