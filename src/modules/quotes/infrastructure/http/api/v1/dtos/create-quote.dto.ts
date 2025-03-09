@@ -1,6 +1,13 @@
 import { QuoteCurrencyCode } from '@/modules/quotes/domain/enums/currency-codes';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateQuoteDto {
   @ApiProperty({
@@ -27,5 +34,6 @@ export class CreateQuoteDto {
   @IsNotEmpty()
   @IsNumber()
   @Min(1)
+  @Max(100000000)
   public amount: number;
 }

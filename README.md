@@ -62,6 +62,12 @@ npm run prisma:migrate
 npm run start:dev
 ```
 
+6. Seed the database (optional)
+
+```bash
+npm run prisma:seed
+```
+
 ## 🧪 Testing
 
 This project uses Jest as the testing framework and includes comprehensive test coverage for all major components.
