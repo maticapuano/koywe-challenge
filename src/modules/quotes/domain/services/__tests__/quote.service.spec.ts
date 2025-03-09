@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExchangeRateAdapter } from '../../adapters/exchange-rate.adapter';
+import { QuoteCurrencyCode } from '../../enums/currency-codes';
 import { QuoteService } from '../quote.service';
 
 describe('QuoteService', () => {
@@ -27,8 +28,8 @@ describe('QuoteService', () => {
 
   describe('getRate', () => {
     it('should return exchange rate from adapter', async () => {
-      const from = 'ARS';
-      const to = 'USDT';
+      const from = QuoteCurrencyCode.ARS;
+      const to = QuoteCurrencyCode.USDT;
       const expectedRate = 1200;
 
       exchangeRateAdapter.getRate.mockResolvedValue(expectedRate);
@@ -40,9 +41,9 @@ describe('QuoteService', () => {
     });
 
     it('should propagate errors from adapter', async () => {
-      const from = 'ARS';
-      const to = 'USD';
-      const error = new Error('Failed to fetch rate');
+      const from = QuoteCurrencyCode.ARS;
+      const to = 'INVALID_CURRENCY';
+      const error = new Error('Sorry, we could not find the rate');
 
       exchangeRateAdapter.getRate.mockRejectedValue(error);
 
@@ -55,8 +56,8 @@ describe('QuoteService', () => {
   describe('convert', () => {
     it('should convert amount using exchange rate from adapter', async () => {
       const amount = 100;
-      const from = 'ARS';
-      const to = 'EUR';
+      const from = QuoteCurrencyCode.ARS;
+      const to = QuoteCurrencyCode.USDT;
       const rate = 1200;
 
       exchangeRateAdapter.getRate.mockResolvedValue(rate);
@@ -69,8 +70,8 @@ describe('QuoteService', () => {
 
     it('should handle zero amount conversion', async () => {
       const amount = 0;
-      const from = 'ARS';
-      const to = 'USDT';
+      const from = QuoteCurrencyCode.ARS;
+      const to = QuoteCurrencyCode.USDT;
       const rate = 1200;
 
       exchangeRateAdapter.getRate.mockResolvedValue(rate);
@@ -81,11 +82,27 @@ describe('QuoteService', () => {
       expect(exchangeRateAdapter.getRate).toHaveBeenCalledWith(from, to);
     });
 
+    it('should convert using crypto currency to fiat currency', async () => {
+      const from = QuoteCurrencyCode.BTC;
+      const to = QuoteCurrencyCode.ARS;
+
+      const amount = 100;
+      const rate = 101672161.5;
+
+      exchangeRateAdapter.getRate.mockResolvedValue(rate);
+
+      const result = await service.convert(amount, from, to);
+
+      expect(result).toBe(amount * rate);
+      expect(exchangeRateAdapter.getRate).toHaveBeenCalledWith(from, to);
+      expect(result).toBe(amount * rate);
+    });
+
     it('should propagate errors from adapter during conversion', async () => {
       const amount = 100;
-      const from = 'ARS';
-      const to = 'USD';
-      const error = new Error('Failed to fetch rate');
+      const from = QuoteCurrencyCode.ARS;
+      const to = 'INVALID_CURRENCY';
+      const error = new Error('Sorry, we could not find the rate');
 
       exchangeRateAdapter.getRate.mockRejectedValue(error);
 

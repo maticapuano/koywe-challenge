@@ -103,6 +103,59 @@ describe('CreateQuoteCase', () => {
     });
   });
 
+  it('should create a quote from crypto currency to fiat currency', async () => {
+    const input = {
+      amount: 100,
+      from: QuoteCurrencyCode.BTC,
+      to: QuoteCurrencyCode.ARS,
+    };
+
+    const btcRate = 101672161.5;
+    const mockConvertedAmount = input.amount * btcRate;
+
+    quoteService.getRate.mockResolvedValue(btcRate);
+    quoteService.convert.mockResolvedValue(mockConvertedAmount);
+
+    const expectedQuote: Quote = {
+      id: '85598518-3544-416e-9071-007e7d64c742',
+      amount: new Decimal(mockConvertedAmount),
+      convertedAmount: new Decimal(input.amount),
+      expiresAt: mockExpiryDate,
+      from: input.from,
+      rate: new Decimal(btcRate),
+      to: input.to,
+      createdAt: mockDate,
+    };
+
+    quoteRepository.create.mockResolvedValue(expectedQuote);
+
+    const result = await createQuoteCase.execute(input);
+
+    expect(result).toEqual(expectedQuote);
+    expect(result.amount).toEqual(new Decimal(mockConvertedAmount));
+    expect(result.convertedAmount).toEqual(new Decimal(input.amount));
+    expect(result.rate).toEqual(new Decimal(btcRate));
+    expect(result.createdAt).toEqual(mockDate);
+    expect(result.expiresAt).toEqual(mockExpiryDate);
+    expect(quoteService.getRate).toHaveBeenCalledWith(input.from, input.to);
+    expect(quoteService.convert).toHaveBeenCalledWith(
+      input.amount,
+      input.from,
+      input.to,
+    );
+    expect(dateAdapter.now).toHaveBeenCalled();
+    expect(dateAdapter.addMinutes).toHaveBeenCalledWith(mockDate, 15);
+    expect(envService.get).toHaveBeenCalledWith('QUOTE_EXPIRES_IN_MINUTES');
+    expect(quoteRepository.create).toHaveBeenCalledWith({
+      amount: new Decimal(mockConvertedAmount),
+      convertedAmount: new Decimal(input.amount),
+      expiresAt: mockExpiryDate,
+      from: input.from,
+      rate: new Decimal(btcRate),
+      to: input.to,
+    });
+  });
+
   it('should throw QuoteSameCurrencyException when from and to currencies are the same', async () => {
     const input = {
       amount: 100,
